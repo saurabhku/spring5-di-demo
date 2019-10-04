@@ -1,5 +1,6 @@
 package guru.springframework.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,10 @@ import org.springframework.stereotype.Service;
 @Primary
 @Profile({"en", "default"})
 public class PrimaryGreetingService implements GreetingService {
+    @Autowired
+    public PrimaryGreetingService(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
 
     private GreetingRepository greetingRepository;
 
